@@ -9,16 +9,11 @@ export const ProductList = () => {
   const { productTypes, getProductTypes } = useContext(ProductTypesContext)
 
   useEffect(() => {
-  // debugger
-	getProducts()
+	getProductTypes()
+  .then(getProducts)
     }, [])
 
-  useEffect(() => {
-  // debugger
-  getProductTypes()
-    }, [products])
 
-    // debugger
   return (
     <div className="products">
       {console.log("productList: Render", products)}

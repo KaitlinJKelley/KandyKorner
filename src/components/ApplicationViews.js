@@ -17,23 +17,23 @@ export const ApplicationViews = () => (
             </Route>
         </LocationProvider>
 
-        <ProductProvider>
-            <ProductTypeProvider>
-                <Route exact path ="/products">
+        <ProductTypeProvider>
+            <ProductProvider>
+                <Route path ="/products">
                     <ProductList />
                 </Route>
-            </ProductTypeProvider>
-        </ProductProvider>
+            </ProductProvider>
+        </ProductTypeProvider>
 
-        <Route exact path ="/employees">
+        <Route path ="/employees">
             {/* <EmployeeList /> */}
         </Route>
 
-        <Route exact path ="/productTypes">
+        <Route path ="/productTypes">
             {/* <ProductTypeList /> */}
         </Route>
 
-        <Route exact path ="/customers">
+        <Route path ="/customers">
             {/* <CustomerList /> */}
         </Route>
     </>
