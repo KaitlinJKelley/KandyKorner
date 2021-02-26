@@ -12,10 +12,9 @@ export const ProductList = () => {
 
   return (
     <div className="products">
-      <h1>Inventory Coming Soon!</h1>
       {console.log("productList: Render", products)}
       {
-    products.map(product => <productCard key={product.id} product={product} />)
+    products.map(product => <ProductCard key={product.id} product={product} />)
     }
     </div>
   )
