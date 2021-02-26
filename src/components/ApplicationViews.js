@@ -4,6 +4,7 @@ import { LocationList } from "./locations/LocationList"
 import { LocationProvider } from "./locations/LocationProvider"
 import { ProductList } from "./products/ProductList"
 import { ProductProvider } from "./products/ProductProvider"
+import { ProductTypeProvider } from "./products/ProductTypeProvider"
 
 export const ApplicationViews = () => (
     <>
@@ -15,18 +16,24 @@ export const ApplicationViews = () => (
                 <LocationList />
             </Route>
         </LocationProvider>
-        <ProductProvider>
-            <Route exact path ="/products">
-                <ProductList />
-            </Route>
-        </ProductProvider>
-        <Route exact path ="/employees">
+
+        <ProductTypeProvider>
+            <ProductProvider>
+                <Route path ="/products">
+                    <ProductList />
+                </Route>
+            </ProductProvider>
+        </ProductTypeProvider>
+
+        <Route path ="/employees">
             {/* <EmployeeList /> */}
         </Route>
-        <Route exact path ="/productTypes">
+
+        <Route path ="/productTypes">
             {/* <ProductTypeList /> */}
         </Route>
-        <Route exact path ="/customers">
+
+        <Route path ="/customers">
             {/* <CustomerList /> */}
         </Route>
     </>
