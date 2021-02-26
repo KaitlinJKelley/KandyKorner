@@ -1,23 +1,25 @@
 import React from "react"
 import { Route } from "react-router-dom"
 import { LocationList } from "./locations/LocationList"
-import { LocationCard } from "./locations/LocationCard"
-import { NavBar } from "./nav/NavBar"
 import { LocationProvider } from "./locations/LocationProvider"
+import { ProductList } from "./products/ProductList"
+import { ProductProvider } from "./products/ProductProvider"
 
 export const ApplicationViews = () => (
     <>
         <Route exact path ="/">
-            {/* <NavBar /> */}
+            
         </Route>
         <LocationProvider>
-            <Route exact path ="/locations">
+            <Route path ="/locations">
                 <LocationList />
             </Route>
         </LocationProvider>
-        <Route exact path ="/products">
-            {/* <ProductList /> */}
-        </Route>
+        <ProductProvider>
+            <Route exact path ="/products">
+                <ProductList />
+            </Route>
+        </ProductProvider>
         <Route exact path ="/employees">
             {/* <EmployeeList /> */}
         </Route>
