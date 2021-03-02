@@ -21,15 +21,47 @@ export const EmployeeForm = () => {
         getLocations()
     }, [])
 
+    const handleInputChange = (event) => { 
+        const newEmployee = {...employee}
+         let selectedVal = event.target.value
+
+         //  handles booleans (manager and fullTime)
+         if(event.target.id.includes("null")) {
+             const [property,] = event.target.id.split("__")
+
+                if(event.target.value === "true") {
+                   const boolean = true
+                   newEmployee[property] = boolean
+                } else {
+                    const boolean = false
+                    newEmployee[property] = boolean
+                }
+                setEmployee(newEmployee)
+         } 
+        //  handles integers
+         if(event.target.id === "locationId" || event.target.id === "hourlyRate") {
+            // If user backspaces, this conditional prevents NaN from being rendered
+            if(selectedVal === "") {
+                selectedVal = 0
+            }
+
+            selectedVal = parseInt(selectedVal)
+         }
+
+            newEmployee[event.target.id] = selectedVal
+            setEmployee(newEmployee)
+            console.log(newEmployee)
+    }
+
     return (
         <form>
             <fieldset>
-                <label htmlFor="name" ></label>
-                <input id="name" placeholder="Employee Name"></input>
+                <label htmlFor="name"></label>
+                <input type="text" id="name" onChange={handleInputChange} Required value={employee.name} placeholder="Employee Name"/>
             </fieldset>
             <fieldset>
                 <label htmlFor="location"></label>
-                <select>
+                <select id="locationId" onChange={handleInputChange}>
                     <option value="0"> Select a location</option>
                     {
                         locations.map(location => <option key={location.id} value={location.id}>{location.name}</option>)
@@ -38,25 +70,26 @@ export const EmployeeForm = () => {
             </fieldset>
             <fieldset>
                 <label htmlFor="level"></label>
-                <select>
+                <select id="manager__null" onChange={handleInputChange}>
                     <option value="0"> Select a level</option>
-                    <option id="manager__true" value="true"> Manager</option>
-                    <option id="manager__false" value="false"> Staff</option>
+                    <option value="true"> Manager</option>
+                    <option value="false"> Staff</option>
                 </select>
             </fieldset>
             <fieldset>
                 <label htmlFor="fte"></label>
-                <select>
+                <select id="fullTime__null" onChange={handleInputChange}>
                     <option value="0"> Select an FTE status</option>
-                    <option id="fullTime__true" value="true"> Full Time</option>
-                    <option id="fullTime__false" value="false"> Part Time</option>
+                    <option value="true"> Full Time</option>
+                    <option value="false"> Part Time</option>
                 </select>
             </fieldset>
             <fieldset>
                 <label htmlFor="hourlyRate" ></label>
-                <input id="hourlyRate" placeholder="Hourly Rate of Pay"></input>
+                <input id="hourlyRate" Required value={employee.hourlyRate} onChange={handleInputChange} placeholder="Hourly Rate of Pay"></input>
             </fieldset>
 
         </form>
+        
     )
 }
