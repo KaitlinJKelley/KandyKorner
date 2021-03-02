@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
+import { LocationList } from "../locations/LocationList"
 import { LocationContext } from "../locations/LocationProvider"
 import { EmployeeContext } from "./EmployeeProvider"
 
 export const EmployeeForm = () => {
-    const { getLocations } = useContext(LocationContext)
+    const { locations, getLocations } = useContext(LocationContext)
     const { addEmployee } = useContext(EmployeeContext) 
 
     const history = useHistory()
@@ -23,18 +24,20 @@ export const EmployeeForm = () => {
     return (
         <form>
             <fieldset>
-                <label htmlfor="name" placeholder="Employee Name"></label>
-                <input id="name"></input>
+                <label htmlFor="name" ></label>
+                <input id="name" placeholder="Employee Name"></input>
             </fieldset>
             <fieldset>
-                <label htmlfor="location"></label>
+                <label htmlFor="location"></label>
                 <select>
                     <option value="0"> Select a location</option>
-                    {/* {map locations to create options} */}
+                    {
+                        locations.map(location => <option key={location.id} value={location.id}>{location.name}</option>)
+                    }
                 </select>
             </fieldset>
             <fieldset>
-                <label htmlfor="level"></label>
+                <label htmlFor="level"></label>
                 <select>
                     <option value="0"> Select a level</option>
                     <option id="manager__true" value="true"> Manager</option>
@@ -42,7 +45,7 @@ export const EmployeeForm = () => {
                 </select>
             </fieldset>
             <fieldset>
-                <label htmlfor="fte"></label>
+                <label htmlFor="fte"></label>
                 <select>
                     <option value="0"> Select an FTE status</option>
                     <option id="fullTime__true" value="true"> Full Time</option>
@@ -50,8 +53,8 @@ export const EmployeeForm = () => {
                 </select>
             </fieldset>
             <fieldset>
-                <label htmlfor="hourlyRate" placeholder="Hourly Rate of Pay"></label>
-                <input id="hourlyRate"></input>
+                <label htmlFor="hourlyRate" ></label>
+                <input id="hourlyRate" placeholder="Hourly Rate of Pay"></input>
             </fieldset>
 
         </form>
