@@ -1,13 +1,13 @@
-import React, { useContext, useState } from "react"
+import React, { createContext, useState } from "react"
 
-export const EmployeeContext = useContext()
+export const EmployeeContext = createContext()
 
 export const EmployeeProvider = (props) => {
     const [employees, setEmployees] = useState([])
 
     const getEmployees = () => {
         return fetch("http://localhost:8088/employees/?_expand=location")
-        .then(response => response.json)
+        .then(response => response.json())
         .then(setEmployees)
     }
 
@@ -23,10 +23,10 @@ export const EmployeeProvider = (props) => {
     }
 
     return (
-        <LocationContext.Provider value={{
+        <EmployeeContext.Provider value={{
             employees, getEmployees, addEmployee
         }}>
             {props.children}
-        </LocationContext.Provider>
+        </EmployeeContext.Provider>
     )
 }

@@ -1,8 +1,8 @@
 import React from "react"
 
 export const EmployeeCard = ({ employee }) => (
-    <section class="employeea">
+    <section className="employee">
         <h2>{employee.name}</h2>
-        <p>{employee.location.name}</p>
+        <p><b>Location:</b> {employee.location.name}</p>
     </section>
 )
