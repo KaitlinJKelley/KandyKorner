@@ -20,7 +20,7 @@ export const EmployeeForm = () => {
     useEffect(() => {
         getLocations()
     }, [])
-
+    // ADD CONDITIONAL TO MAKE SURE ALL FIELDS ARE COMPLETE
     const handleInputChange = (event) => { 
         const newEmployee = {...employee}
          let selectedVal = event.target.value
