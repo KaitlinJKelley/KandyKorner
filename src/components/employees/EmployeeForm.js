@@ -31,13 +31,14 @@ export const EmployeeForm = () => {
 
                 if(event.target.value === "true") {
                    const boolean = true
+                //    debugger
                    newEmployee[property] = boolean
                 } else {
                     const boolean = false
                     newEmployee[property] = boolean
                 }
                 setEmployee(newEmployee)
-         } 
+         } else 
         //  handles integers
          if(event.target.id === "locationId" || event.target.id === "hourlyRate") {
             // If user backspaces, this conditional prevents NaN from being rendered
@@ -46,11 +47,20 @@ export const EmployeeForm = () => {
             }
 
             selectedVal = parseInt(selectedVal)
-         }
-
+            newEmployee[event.target.id] = selectedVal
+            setEmployee(newEmployee)
+        } else {
+            
             newEmployee[event.target.id] = selectedVal
             setEmployee(newEmployee)
             console.log(newEmployee)
+        }
+
+    }
+
+    const handleSaveEmployeeClick = () => {
+        addEmployee(employee)
+        .then(history.push("/employees"))
     }
 
     return (
@@ -88,6 +98,7 @@ export const EmployeeForm = () => {
                 <label htmlFor="hourlyRate" ></label>
                 <input id="hourlyRate" Required value={employee.hourlyRate} onChange={handleInputChange} placeholder="Hourly Rate of Pay"></input>
             </fieldset>
+            <button onClick={handleSaveEmployeeClick}>Save Employee</button>
 
         </form>
         
