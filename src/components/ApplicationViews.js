@@ -8,9 +8,6 @@ import { LocationProvider } from "./locations/LocationProvider"
 import { ProductList } from "./products/ProductList"
 import { ProductProvider } from "./products/ProductProvider"
 import { ProductTypeProvider } from "./products/ProductTypeProvider"
-import { Login } from "../auth/Login"
-import { Register } from "../auth/Register"
-import { Home } from "../Home"
 import { CustomerProductsProvier } from "./products/CustomerProductProvider"
 
 export const ApplicationViews = () => (
@@ -31,10 +28,12 @@ export const ApplicationViews = () => (
                     <Route path ="/products">
                         <ProductList />
                     </Route>
+                    <Route path ="/order/:customerId(\d+)">
+                        <OrderList />
+                    </Route>
                 </CustomerProductsProvier>
             </ProductProvider>
         </ProductTypeProvider>
-
 
         <EmployeeProvider>
             <LocationProvider>
