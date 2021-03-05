@@ -11,6 +11,7 @@ import { ProductTypeProvider } from "./products/ProductTypeProvider"
 import { Login } from "../auth/Login"
 import { Register } from "../auth/Register"
 import { Home } from "../Home"
+import { CustomerProductsProvier } from "./products/CustomerProductProvider"
 
 export const ApplicationViews = () => (
     <>
@@ -26,11 +27,14 @@ export const ApplicationViews = () => (
 
         <ProductTypeProvider>
             <ProductProvider>
-                <Route path ="/products">
-                    <ProductList />
-                </Route>
+                <CustomerProductsProvier>
+                    <Route path ="/products">
+                        <ProductList />
+                    </Route>
+                </CustomerProductsProvier>
             </ProductProvider>
         </ProductTypeProvider>
+
 
         <EmployeeProvider>
             <LocationProvider>
