@@ -9,6 +9,7 @@ import { ProductList } from "./products/ProductList"
 import { ProductProvider } from "./products/ProductProvider"
 import { ProductTypeProvider } from "./products/ProductTypeProvider"
 import { CustomerProductsProvier } from "./products/CustomerProductProvider"
+import { OrderList } from "./products/OrderList"
 
 export const ApplicationViews = () => (
     <>
@@ -28,7 +29,7 @@ export const ApplicationViews = () => (
                     <Route path ="/products">
                         <ProductList />
                     </Route>
-                    <Route path ="/order/:customerId(\d+)">
+                    <Route path ="/order">
                         <OrderList />
                     </Route>
                 </CustomerProductsProvier>
