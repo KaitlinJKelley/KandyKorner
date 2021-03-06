@@ -15,17 +15,23 @@ export const OrderList = () => {
     const customerId = parseInt(authHelper.getCurrentUserId())
 
     const loggedInCustomerProducts = customerProducts.filter(cp => cp.customerId === customerId)
-    // debugger
+   
     const productNameArray = [...new Set(loggedInCustomerProducts.map(cp => cp.product.name))]
+
+    const arrayOfPrices = loggedInCustomerProducts.map(cp => cp.product.price)
     
     return (
         <div>
           {
               productNameArray.map(productName => {
                     
-                return <OrderView key={Math.random()} products={loggedInCustomerProducts.filter(cp => cp.product.name === productName)} productName={productName}/>
+                return <OrderView key={Math.random()} 
+                products={loggedInCustomerProducts.filter(cp => cp.product.name === productName)} 
+                productName={productName}/>
+                
               })
-        }  
+            }  
+            <h3>Order Total: ${arrayOfPrices.reduce((v1, v2) => v1 + v2, 0).toFixed(2)}</h3>
         </div>
     )
 

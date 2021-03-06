@@ -26,7 +26,7 @@ export const ProductCard = ({ product, productType }) => {
         <h2>{product.name}
         <button id={`${product.id}`} onClick={handlePurchaseClick}>Purchase</button>    
         </h2>
-        <p>Price: {product.price}</p>
+        <p>Price: ${product.price.toFixed(2)}</p>
         <p>Category: {productType.category}</p>
     </section>
     )}
