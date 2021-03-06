@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react"
-import { CustomerProductsContext } from "./CustomerProductProvider"  
+import { CustomerProductsContext } from "../Orders/CustomerProductProvider"  
 import { authHelper } from "../../auth/authHelper" 
 
 
@@ -24,9 +24,9 @@ export const ProductCard = ({ product, productType }) => {
     return (
     <section className="product">
         <h2>{product.name}
-        {productType ? <button id={`${product.id}`} onClick={handlePurchaseClick}>Purchase</button> : ""}    
+        <button id={`${product.id}`} onClick={handlePurchaseClick}>Purchase</button>    
         </h2>
-        <p>Price: ${product.price}</p>
-        {productType ? `Category: ${productType.category} `: ``}
+        <p>Price: {product.price}</p>
+        <p>Category: {productType.category}</p>
     </section>
     )}
